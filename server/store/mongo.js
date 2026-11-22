@@ -95,11 +95,20 @@ function wrap(Model) {
 
 export async function createMongoStore(uri) {
 	mongoose.set('strictQuery', true);
-	await mongoose.connect(uri, { serverSelectionTimeoutMS: 15_000 });
+	// The database name is set here (MONGODB_DB, default "maplerow"), so the same connection
+	// string can be shared with other apps on the cluster without editing it.
+	const dbName = (process.env.MONGODB_DB || 'maplerow').trim();
+	await mongoose.connect(uri, { serverSelectionTimeoutMS: 15_000, dbName });
+	console.log(`MongoDB connected (database "${dbName}")`);
 	const Appointment = mongoose.models.Appointment || mongoose.model('Appointment', appointmentSchema);
 	const Message = mongoose.models.Message || mongoose.model('Message', messageSchema);
 	const Call = mongoose.models.Call || mongoose.model('Call', callSchema);
-	await Appointment.syncIndexes();
+	try {
+		await Appointment.syncIndexes();
+	} catch (error) {
+		// Don't stop the site over an index problem; bookings still work, only the extra safety net is missing.
+		console.error('[mongo] could not create indexes:', error.message);
+	}
 	return {
 		kind: 'mongo',
 		appointments: wrap(Appointment),
