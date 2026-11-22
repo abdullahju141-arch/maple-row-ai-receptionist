@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Call Ava · AI Receptionist · Maple Row Dental</title>
+	<meta name="description" content="Talk to Ava, the AI phone receptionist for Maple Row Dental. She checks the real appointment book, books your visit and answers questions about prices and opening hours.">
+	<meta property="og:title" content="Call Ava, the AI receptionist at Maple Row Dental">
+	<meta property="og:description" content="A live demo of an AI phone receptionist that books real appointments while you talk.">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+	<script type="module" src="/js/app.js"></script>
+</head>
+<body>
+	<a class="skip" href="#call">Skip to the call</a>
+
+	<header class="site-header">
+		<div class="wrap site-header__inner">
+			<a class="brand" href="/">
+				<img src="/favicon.svg" alt="" width="40" height="40">
+				<span>Maple Row <b>Dental</b></span>
+			</a>
+			<nav class="nav" aria-label="Main">
+				<a href="#call">Call Ava</a>
+				<a href="#schedule">Appointment book</a>
+				<a href="#services">Services</a>
+				<a href="https://abdullahsites.nfy.fyi/" class="nav__ext">Clinic website</a>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="hero" id="call">
+			<div class="wrap hero__grid">
+				<div class="hero__copy">
+					<p class="eyebrow"><span class="dot" aria-hidden="true"></span>AI phone receptionist · live demo</p>
+					<h1>Call Ava. She books your appointment while you talk.</h1>
+					<p class="lead">Ava answers the phone for Maple Row Dental. She checks the real appointment book, books a time that suits you and answers questions about prices, insurance and opening hours, day or night.</p>
+				</div>
+
+				<div class="phone" data-state="idle" aria-live="polite">
+					<div class="phone__top">
+						<div class="avatar" aria-hidden="true">
+							<canvas class="avatar__ring" width="240" height="240"></canvas>
+							<span class="avatar__face">A</span>
+						</div>
+						<div>
+							<p class="phone__name">Ava</p>
+							<p class="phone__role">AI receptionist · Maple Row Dental</p>
+							<p class="phone__status" id="call-status">Ready when you are</p>
+						</div>
+					</div>
+
+					<div class="transcript" id="transcript" aria-label="Call transcript">
+						<p class="transcript__empty">Press <b>Call Ava</b> and allow the microphone. The conversation appears here as you talk.</p>
+					</div>
+
+					<ul class="activity" id="activity" aria-label="What Ava is doing"></ul>
+
+					<p class="notice" id="call-notice" hidden></p>
+
+					<div class="controls">
+						<button type="button" class="btn-call" id="call-btn">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+							<span>Call Ava</span>
+						</button>
+						<button type="button" class="btn-round" id="mute-btn" aria-pressed="false" hidden>
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1A7 7 0 0 0 19 12z"/></svg>
+							<span class="sr-only">Mute</span>
+						</button>
+					</div>
+					<p class="phone__fine">Uses your microphone. Headphones give the best result. Please use a made-up name and number: this is a demo.</p>
+				</div>
+
+				<div class="hero__extra">
+					<ul class="checks">
+						<li>Checks real availability before offering a time</li>
+						<li>Books, cancels and gives you a reference number</li>
+						<li>Knows prices, hours and clinic policies</li>
+						<li>Sends urgent cases to the right place</li>
+					</ul>
+					<div class="try">
+						<p class="try__title">Try saying</p>
+						<ul class="try__list">
+							<li>“I'd like a check-up next Tuesday afternoon.”</li>
+							<li>“How much is teeth whitening?”</li>
+							<li>“I've got a toothache, can I come in today?”</li>
+							<li>“I need to cancel my appointment.”</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="schedule">
+			<div class="wrap">
+				<div class="section__head">
+					<div>
+						<p class="eyebrow">Live appointment book</p>
+						<h2>Watch your booking appear</h2>
+					</div>
+					<p class="section__lead">This is the calendar Ava checks during the call. Bookings made on a call are highlighted. Names and numbers are never shown here.</p>
+				</div>
+				<div class="days" id="days" role="tablist" aria-label="Choose a day"></div>
+				<div class="board" id="board" aria-live="polite"></div>
+				<ul class="legend">
+					<li><span class="swatch swatch--free"></span>Free</li>
+					<li><span class="swatch swatch--booked"></span>Booked</li>
+					<li><span class="swatch swatch--call"></span>Booked by Ava</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--tint" id="how">
+			<div class="wrap">
+				<p class="eyebrow">How it works</p>
+				<h2>A real conversation, a real booking</h2>
+				<ol class="steps">
+					<li>
+						<h3>You talk</h3>
+						<p>Your voice streams from the browser to the clinic's server, the same way a phone line would.</p>
+					</li>
+					<li>
+						<h3>Ava understands</h3>
+						<p>Google Gemini Live listens and replies in a natural voice. You can interrupt her, just like a person.</p>
+					</li>
+					<li>
+						<h3>The calendar decides</h3>
+						<p>When Ava needs a time, the server checks the appointment book and saves the booking. She can't double-book or invent a slot.</p>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="section" id="services">
+			<div class="wrap services">
+				<div>
+					<p class="eyebrow">Services and guide prices</p>
+					<h2>What Ava can book</h2>
+					<table class="prices" id="prices"><tbody></tbody></table>
+				</div>
+				<aside class="info-card">
+					<h3>Opening hours</h3>
+					<dl class="hours">
+						<div><dt>Monday – Friday</dt><dd>9am – 6pm</dd></div>
+						<div><dt>Saturday</dt><dd>10am – 2pm</dd></div>
+						<div><dt>Sunday</dt><dd>Closed</dd></div>
+					</dl>
+					<h3>Find us</h3>
+					<p>24 Maple Row, Suite 3<br>Springfield, IL 62704</p>
+					<p class="muted">Times are clinic time (Central Time).</p>
+				</aside>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<p><b>Maple Row Dental is a fictional clinic</b> created for this demo. Bookings are sample data and are deleted a week after the appointment date.</p>
+			<p>During a call your voice is sent to Google's Gemini service to produce Ava's replies. This site does not record calls. Ava is an AI and can make mistakes.</p>
+			<p class="credit">AI receptionist demo built by Muhammad Abdullah · MERN, Node.js and Gemini Live</p>
+		</div>
+	</footer>
+</body>
+</html>

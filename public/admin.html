@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
+	<title>Front desk · Maple Row Dental</title>
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+	<script type="module" src="/js/admin.js"></script>
+</head>
+<body>
+	<header class="site-header">
+		<div class="wrap site-header__inner">
+			<a class="brand" href="/"><img src="/favicon.svg" alt="" width="40" height="40"><span>Maple Row <b>Dental</b></span></a>
+			<nav class="nav" aria-label="Main"><a href="/">Call Ava</a></nav>
+		</div>
+	</header>
+
+	<main class="section">
+		<div class="wrap">
+			<form class="login" id="login" hidden>
+				<p class="eyebrow">Front desk</p>
+				<h1>Log in</h1>
+				<label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+				<p class="notice" data-tone="error" id="login-error" hidden></p>
+				<button class="btn btn--primary" type="submit">Log in</button>
+			</form>
+
+			<div id="dash" hidden>
+				<div class="admin-bar">
+					<div>
+						<p class="eyebrow">Front desk</p>
+						<h1>Bookings from Ava</h1>
+					</div>
+					<button class="btn" type="button" id="logout">Log out</button>
+				</div>
+				<ul class="kpis" id="kpis"></ul>
+
+				<h2>Upcoming appointments</h2>
+				<div class="table-wrap">
+					<table class="table">
+						<thead><tr><th>When</th><th>Patient</th><th>Phone</th><th>Service</th><th>Notes</th><th>Status</th><th><span class="sr-only">Actions</span></th></tr></thead>
+						<tbody id="appts"></tbody>
+					</table>
+				</div>
+
+				<h2>Messages for the team</h2>
+				<div class="table-wrap">
+					<table class="table">
+						<thead><tr><th>Received</th><th>From</th><th>Phone</th><th>Message</th><th>Status</th><th><span class="sr-only">Actions</span></th></tr></thead>
+						<tbody id="messages"></tbody>
+					</table>
+				</div>
+
+				<h2>Recent calls</h2>
+				<div class="table-wrap">
+					<table class="table">
+						<thead><tr><th>Started</th><th>Length</th><th>What Ava did</th><th>Ended</th></tr></thead>
+						<tbody id="calls"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
